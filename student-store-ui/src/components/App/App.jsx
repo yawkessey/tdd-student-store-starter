@@ -13,12 +13,12 @@ export default function App() {
     <div className="app">
       <BrowserRouter>
       
-        <main>
-
+        
+      <main>
         <Navbar />
         <Sidebar />
         <Home />
-
+        
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/products/:productId" element={<ProductDetail />} />

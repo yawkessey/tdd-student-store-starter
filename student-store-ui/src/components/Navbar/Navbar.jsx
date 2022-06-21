@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import * as ReactDOM from "react-dom";
 import Home from "../Home/Home"
 import "./Navbar.css"
-//import { Link } from "react-rouer-dom"
+let logo = "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/wfsonfv0p92plryzwijf"
 
 
 export default function Navbar() {
   
   return (
     <nav className="navbar">
-      <p>Navbar</p>
+      <img id="logo" src = {logo} alt="Codepath logo"/>
       <ul>
         <li>
           <Link to="/">Home</Link>

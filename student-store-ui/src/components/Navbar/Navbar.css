@@ -31,3 +31,8 @@ body {
     align-items: center;
     padding: .25rem;
 }
+
+#logo {
+    width: 75px;
+    height: 75px;
+}
