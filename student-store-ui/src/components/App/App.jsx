@@ -20,47 +20,43 @@ export default function App() {
     axios
       .get(apiUrl)
       .then((res) => {
-        console.log(res)
-        setProducts(res.data.products)
+        console.log(res);
+        setProducts(res.data.products);
       })
       .catch((err) => {
         console.log({ err });
       });
   }
 
-
-
   React.useEffect(() => {
     getProductDetail();
   }, []);
 
   React.useEffect(() => {
-    console.log(products)
-  }, [products])
+    console.log(products);
+  }, [products]);
 
-  // let isFetching;
-  // let error;
-  // let isOpen;
-  // let shoppingCart;
 
   return (
     <div className="app">
       <BrowserRouter>
         <main>
-          <Navbar />
-          {/* // <Sidebar /> */}
-          <Home />
+          <Navbar products={products}/>
           <Hero />
-          <About id="about"/>
-          <ContactUs />
-
+          {/* // <Sidebar /> */}
+         
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/#about" component={About}/>
-            <Route path="/products/:productId" element={<ProductDetail products={products}/>} />
+            <Route path="/" element={<Home products={products} />} />
+            <Route
+              path="/products/:productId"
+              element={<ProductDetail products={products} />}
+            />
             <Route path="*" element={<NotFound />} />
-            {/* YOUR CODE HERE! */}
           </Routes>
+     
+        <About id="about" />
+        <ContactUs />
+
         </main>
       </BrowserRouter>
     </div>

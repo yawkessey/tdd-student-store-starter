@@ -1,13 +1,14 @@
-import * as React from 'react';
+import * as React from "react";
+import ProductCard from "../ProductCard/ProductCard";
+import axios from "axios";
+import Home from "../Home/Home";
 
-axios 
-
-export default function ProductGrid() {
+export default function ProductGrid({products}) {
   return (
-      data.map((product) => {
-        <productCard img={product.img}/>
-        
-      })
-    
-  )
+    <div>
+      {products.map((product) => {
+        return <ProductCard product={product}/>;
+      })}
+    </div>
+  );
 }
