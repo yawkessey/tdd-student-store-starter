@@ -1,0 +1,40 @@
+.contactUsContent, .contactUsImage, .contactUsInfo {
+  display: flex;
+}
+.contactUsContainer {
+  margin-top: 20px;
+  height: 300px;
+}
+.contactUsContent {
+  padding: 20px;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 28px 36px;
+  margin-right: 80px;
+}
+.contactUsInfo {
+  padding: 20px;
+  flex-direction: column;
+  color: white;
+  list-style: none;  
+}
+.contactUsInfo li {
+  display: flex;
+}
+
+.contactUsInfo li {
+  margin-bottom: 10px;
+}
+
+.contactUsImage {
+  position: relative;
+/*   top: -75px; */
+  height: 1000; 
+}
+
+.contactUsContainer {
+  border: 2px solid #2c4047;
+  display: flex;
+  flex-direction: row;
+  background: #2c4047
+}

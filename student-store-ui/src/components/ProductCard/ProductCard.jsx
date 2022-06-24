@@ -13,9 +13,18 @@ export default function ProductCard(props) {
     */
     return (
         <div className="productCard">
-            {props.products.map((product,index) =>{
-                return <img src={product.img} />
-            })}
+          <img src={props.img}></img>
+          <div className="bottom-section">
+            <div>
+              <p className="name"></p>
+              <div className="controls">
+                <p>plus</p>
+                <p>minus</p>
+              </div>
+            </div>
+            <img className="stars"></img>
+            <p></p>
+          </div>
         </div>
     )
 

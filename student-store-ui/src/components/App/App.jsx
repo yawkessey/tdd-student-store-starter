@@ -8,6 +8,9 @@ import NotFound from "../NotFound/NotFound";
 import ProductDetail from "../ProductDetail/ProductDetail";
 import axios from "axios";
 import { useState } from "react";
+import Hero from "../Hero/Hero";
+import About from "../About/About";
+import ContactUs from "../ContactUs/ContactUs";
 
 export default function App() {
   let apiUrl = "https://codepath-store-api.herokuapp.com/store";
@@ -25,6 +28,8 @@ export default function App() {
       });
   }
 
+
+
   React.useEffect(() => {
     getProductDetail();
   }, []);
@@ -40,18 +45,19 @@ export default function App() {
 
   return (
     <div className="app">
-      {products.map((product,index) => {
-        <img src={product.img} />
-      })}
       <BrowserRouter>
         <main>
           <Navbar />
-          <Sidebar />
-          <Home products={products}/>
+          {/* // <Sidebar /> */}
+          <Home />
+          <Hero />
+          <About id="about"/>
+          <ContactUs />
 
           <Routes>
-            <Route path="/" element={<Home products={products}/>} />
-            <Route path="/products/:productId" element={<ProductDetail />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/#about" component={About}/>
+            <Route path="/products/:productId" element={<ProductDetail products={products}/>} />
             <Route path="*" element={<NotFound />} />
             {/* YOUR CODE HERE! */}
           </Routes>

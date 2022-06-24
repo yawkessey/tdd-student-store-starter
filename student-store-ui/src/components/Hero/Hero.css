@@ -1,0 +1,19 @@
+.heroSection {
+  background-color: #00c385;
+  display: flex;
+}
+
+.heroContent {
+  color: #fff;
+  max-width: 70%;
+}
+
+.heroImage {
+  display: flex;
+}
+
+.heroSection, .heroImage, .heroContent {
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
