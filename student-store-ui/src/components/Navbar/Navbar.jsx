@@ -10,7 +10,11 @@ export default function Navbar() {
   
   return (
     <nav className="navbar">
-      <img id="logo" src = {logo} alt="Codepath logo"/>
+      <Link to="/">
+
+        <img id="logo" src = {logo} alt="Codepath logo"/>
+
+      </Link>
       <ul>
         <li>
           <Link to="/">Home</Link>
@@ -30,7 +34,7 @@ export default function Navbar() {
         </li>
 
       </ul>
-      {/* <a href="/"></a> */}
+
     </nav>
   )
 }
