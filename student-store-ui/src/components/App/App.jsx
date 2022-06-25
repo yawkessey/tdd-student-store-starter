@@ -11,6 +11,7 @@ import { useState } from "react";
 import Hero from "../Hero/Hero";
 import About from "../About/About";
 import ContactUs from "../ContactUs/ContactUs";
+import SubNavbar from "../SubNavbar/SubNavbar";
 
 export default function App() {
   let apiUrl = "https://codepath-store-api.herokuapp.com/store";
@@ -52,8 +53,8 @@ export default function App() {
       <BrowserRouter>
         <main>
           <Navbar products={products}/>
-          <Sidebar />
-         
+          {/* <Sidebar /> */}
+
           <Routes>
             <Route path="/" element={<Home products={products} />} />
             <Route
@@ -65,7 +66,7 @@ export default function App() {
      
         <About id="about" />
         <ContactUs />
-
+        
         </main>
       </BrowserRouter>
     </div>
