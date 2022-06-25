@@ -15,6 +15,12 @@ import ContactUs from "../ContactUs/ContactUs";
 export default function App() {
   let apiUrl = "https://codepath-store-api.herokuapp.com/store";
   const [products, setProducts] = useState([]);
+  const [sidebar, setSidebar] = useState(false);
+
+  const toggleSideBar = () => {
+    setSidebar
+  }
+
 
   function getProductDetail() {
     axios
@@ -36,14 +42,17 @@ export default function App() {
     console.log(products);
   }, [products]);
 
-
+  
+  //handleAddItemToCart function 
+  //handleRemoveItemFromCart function
+  //handleOnCheckoutFormChange
+  //handleOnSubmitCheckoutForm
   return (
     <div className="app">
       <BrowserRouter>
         <main>
           <Navbar products={products}/>
-          <Hero />
-          {/* // <Sidebar /> */}
+          <Sidebar />
          
           <Routes>
             <Route path="/" element={<Home products={products} />} />

@@ -3,6 +3,7 @@ import * as ReactDOM from "react-dom";
 import Home from "../Home/Home"
 import ProductDetail from "../ProductDetail/ProductDetail";
 import ProductGrid from "../ProductGrid/ProductGrid";
+import "./ProductCard.css";
 
 export default function ProductCard({product}) {
     /*
@@ -14,14 +15,19 @@ export default function ProductCard({product}) {
     */
     return (
         <div className="productCard">
-          <img src={product.image}></img>
-          <div className="bottom-section">
+            <div className="productImage">
+                <img className="productImage" src={product.image}></img>
+            </div>
+          <div className="productInfo">
             <div>
-              <p className="name"></p>
+              <p className="productName">{product.name}</p>
+              <div className="stars">
+                <img className="starImage" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/4.5_stars.svg/2560px-4.5_stars.svg.png"></img>
+              </div>
+              <p>{"$" + product.price}</p>
               <div className="controls">
-                <p>{}</p>
-                <button>plus</button>
-                <button>minus</button>
+                <button>+</button>
+                <button>-</button>
               </div>
             </div>
             <img className="stars"></img>
