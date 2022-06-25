@@ -11,7 +11,7 @@ Selling merchandise in the modern era requires digital solutions. For this proje
 #### Core Features
 
 - [ ] Displays the following sections: header, banner, search, product grid, about, contact, and footer.
-- [ ] On initial page load, display the products at the [GET /store endpoint](https://codepath-store-api.herokuapp.com/store).
+- [X] On initial page load, display the products at the [GET /store endpoint](https://codepath-store-api.herokuapp.com/store).
 - [ ] User can click on the categories (Clothing, food, etc) to filter the product grid by type.
 - [ ] User can search for products.
 - [ ] User can click on a product in the grid to view additional product details. Navigation is via a React Router.
@@ -45,9 +45,9 @@ The following specifications were met on the Express backend and the React front
   - [X] Renders the `Navbar` component on every route
   - [X] Renders the `Sidebar` component on every route
   - [ ] Should create **at least** the following state variables:
-    - [ ] `products` - an array of product objects that is initially empty.
+    - [X] `products` - an array of product objects that is initially empty.
     - [ ] `isFetching` - a boolean value representing whether or not the App is currently fetching the `products` from the API.
-    - [ ] `error` - a variable used to display a message when something goes wrong with the API requests.
+    - [X] `error` - a variable used to display a message when something goes wrong with the API requests.
     - [ ] `isOpen` - a boolean value representing whether or not the `Sidebar.jsx` is in the open or closed state.
     - [ ] `shoppingCart` - should store state for the active user's shopping cart (items they want to purchase and the quantity of each item).
       - [ ] Use whatever data type works best here, but make sure the format the `shoppingCart` as an array before passing it to other components.
@@ -56,9 +56,9 @@ The following specifications were met on the Express backend and the React front
         - [ ] The `itemId` field should store the `id` of the item being purchased.
         - [ ] The `quantity` field should store a number representing how many of that item the user is purchasing.
     - [ ] `checkoutForm` - the user's information that will be sent to the API when they checkout.
-  - [ ] Leverage the `useEffect` hook to ensure that when the `App.jsx` component is mounted to the screen...
-    - [ ] It should make a `GET` request to the API's `/store` endpoint with the `axios.get` method.
-    - [ ] When the request completes successfully, it should store the `products` returned by the response in state.
+  - [X] Leverage the `useEffect` hook to ensure that when the `App.jsx` component is mounted to the screen...
+    - [X] It should make a `GET` request to the API's `/store` endpoint with the `axios.get` method.
+    - [X] When the request completes successfully, it should store the `products` returned by the response in state.
     - [ ] If the request does not complete successfully, or there are no `products` found in the response,
             it should create an error message and store it in the `error` state variable.
   - [ ] The `App.jsx` component should define handler functions to be passed as props to the `Home` and `ProductDetail` components.
@@ -107,19 +107,19 @@ The following specifications were met on the Express backend and the React front
 
 **Home.jsx**
 
-  - [ ] Should render JSX that is wrapped by a `div` element with a `className` of `home`
+  - [x] Should render JSX that is wrapped by a `div` element with a `className` of `home`
   - [ ] Should accept **at least** the following props:
     - `products` - an array of product objects
     - `handleAddItemToCart` - handler function defined in the `App.jsx` component
     - `handleRemoveItemToCart` - handler function defined in the `App.jsx` component
-  - [ ] Should render the `Hero` component
-  - [ ] Should render the `ProductGrid` component
+  - [X] Should render the `Hero` component
+  - [X] Should render the `ProductGrid` component
 
 **Hero.jsx**
 
-  - [ ] Should render JSX that is wrapped by a `div` element with a `className` of `hero`
-  - [ ] Should display an intro message inside an element with the `className` of `intro`. That message should contain the text `"Welcome!"` somewhere within it.
-  - [ ] Should render a hero image inside an `img` tag with the `className` of `hero-img`.
+  - [X] Should render JSX that is wrapped by a `div` element with a `className` of `hero`
+  - [X] Should display an intro message inside an element with the `className` of `intro`. That message should contain the text `"Welcome!"` somewhere within it.
+  - [X] Should render a hero image inside an `img` tag with the `className` of `hero-img`.
 
 **ProductGrid.jsx**
 
