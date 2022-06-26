@@ -32,8 +32,12 @@ export default function ProductCard({ product }) {
             </div>
             <p>{"$" + product.price}</p>
             <div className="controls">
-              <button>+</button>
-              <button>-</button>
+              <button className="add">
+                <i className="material-icons"> add </i>
+              </button>
+              <button className="remove">
+                <i className="material-icons"> remove </i>
+              </button>
             </div>
           </div>
           <img className="stars"></img>

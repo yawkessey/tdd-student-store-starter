@@ -31,7 +31,7 @@ export default function ProductView({ product, productId, quantity }) {
                                 <i className="material-icons"> add </i>
                             </button>
                             <div className="remove">
-                                <button className="add">
+                                <button className="remove">
                                     <i className="material-icons"> remove </i>
                                 </button>  
                             </div>
