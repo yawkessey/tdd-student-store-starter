@@ -18,6 +18,8 @@ export default function App() {
   const [products, setProducts] = useState([]);
   const [sidebar, setSidebar] = useState(false);
 
+  const [shoppingCart, setShoppingCart] = useState([])
+
   const toggleSideBar = () => {
     setSidebar
   }
@@ -57,10 +59,7 @@ export default function App() {
 
           <Routes>
             <Route path="/" element={<Home products={products} />} />
-            <Route
-              path="/products/:productId"
-              element={<ProductDetail products={products} />}
-            />
+            <Route path="/products/:productId" element={<ProductDetail shoppingCart={shoppingCart} />}/>
             <Route path="*" element={<NotFound />} />
           </Routes>
      
