@@ -1,6 +1,7 @@
 .heroSection {
   background-color: #00c385;
   display: flex;
+  max-width: fit-content;
 }
 
 .heroContent {
@@ -16,4 +17,7 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
+  margin: auto;
+  width: 70%;
+
 }

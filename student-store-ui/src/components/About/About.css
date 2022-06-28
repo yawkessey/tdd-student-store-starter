@@ -9,6 +9,13 @@
   background: #2c4047;
 }
 
-.aboutContent, .aboutImage, .aboutContainer {
+.aboutContent,
+.aboutImage,
+.aboutContainer {
   display: flex;
+}
+.aboutSection {
+  padding: 20px;
+  margin: auto;
+  width: 70%;
 }

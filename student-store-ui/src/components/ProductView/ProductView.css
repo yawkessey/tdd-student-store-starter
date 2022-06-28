@@ -1,14 +1,18 @@
 .product-detail {
-    width: 100%; 
-    max-width: 100vw;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 50px;
+  width: 100%;
+  max-width: 100vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 50px;
 }
 
 * {
-    box-sizing: border-box;
-    flex;
+  box-sizing: border-box;
 }
 
+.productView {
+  padding: 20px;
+  margin: auto;
+  width: 70%;
+}

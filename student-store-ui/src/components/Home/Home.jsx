@@ -6,13 +6,13 @@ import ProductGrid from "../ProductGrid/ProductGrid";
 import Hero
  from "../Hero/Hero";
 import SubNavbar from "../SubNavbar/SubNavbar";
-export default function Home({products}) {
+export default function Home({products, handleAddItemToCart, handleRemoveItemToCart, shoppingCart}) {
   return (
     <div className="home">
       <p>Home</p>
       <Hero />
       <SubNavbar />
-      <ProductGrid products={products}/>
+      <ProductGrid products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart} shoppingCart={shoppingCart}/>
     </div>
   );
 }

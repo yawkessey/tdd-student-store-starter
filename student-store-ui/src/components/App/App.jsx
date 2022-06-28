@@ -8,17 +8,51 @@ import NotFound from "../NotFound/NotFound";
 import ProductDetail from "../ProductDetail/ProductDetail";
 import axios from "axios";
 import { useState } from "react";
-import Hero from "../Hero/Hero";
 import About from "../About/About";
 import ContactUs from "../ContactUs/ContactUs";
-import SubNavbar from "../SubNavbar/SubNavbar";
 
 export default function App() {
   let apiUrl = "https://codepath-store-api.herokuapp.com/store";
   const [products, setProducts] = useState([]);
-  const [sidebar, setSidebar] = useState(false);
-
   const [shoppingCart, setShoppingCart] = useState([])
+  const [checkoutForm,  setCheckoutForm] = useState()
+
+  function handleAddItemToCart(productId) {
+    let item = shoppingCart.find((element) => element.id == productId)
+
+    if (item) {
+      const newShoppingCart = [...shoppingCart]
+      newShoppingCart.forEach((item)=> {
+        if (item.id == productId) {
+          item.quantity += 1;
+        }
+
+        setShoppingCart(newShoppingCart)
+      })
+    } else {
+      item= {
+        id: productId,
+        quantity: 1
+      }
+      setShoppingCart(shoppingCart.concat(item))
+    }
+  }
+
+  function handleRemoveItemToCart (productId) {
+    let item = shoppingCart.find((element)=>element.id == productId)
+
+    if (item) {
+      if(item.quantity == 1) {
+        const newCart = shoppingCart.filter((product) => {
+            return product.id != productId
+        })
+        setShoppingCart(newCart)
+        
+      } else {
+        item.quantity -= 1
+      }
+    }
+  }
 
   const toggleSideBar = () => {
     setSidebar
@@ -46,20 +80,17 @@ export default function App() {
   }, [products]);
 
   
-  //handleAddItemToCart function 
-  //handleRemoveItemFromCart function
-  //handleOnCheckoutFormChange
-  //handleOnSubmitCheckoutForm
+
   return (
     <div className="app">
       <BrowserRouter>
         <main>
           <Navbar products={products}/>
-          {/* <Sidebar /> */}
+          <Sidebar shoppingCart={shoppingCart} products={products}/>
 
           <Routes>
-            <Route path="/" element={<Home products={products} />} />
-            <Route path="/products/:productId" element={<ProductDetail shoppingCart={shoppingCart} />}/>
+            <Route path="/" element={<Home products={products} shoppingCart={shoppingCart} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart}/>} />
+            <Route path="/products/:productId" element={<ProductDetail products={products} shoppingCart={shoppingCart} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart}/>}/>
             <Route path="*" element={<NotFound />} />
           </Routes>
      

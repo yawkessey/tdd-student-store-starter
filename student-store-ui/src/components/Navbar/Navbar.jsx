@@ -11,11 +11,13 @@ export default function Navbar() {
   
   return (
     <nav className="navbar">
+      <div className = "logo">
       <Link to="/">
 
         <img id="logo" src = {logo} alt="Codepath logo"/>
 
       </Link>
+      </div>
       <ul>
         <li>
           <Link to="/">Home</Link>

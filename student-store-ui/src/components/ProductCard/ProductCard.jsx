@@ -6,14 +6,16 @@ import ProductGrid from "../ProductGrid/ProductGrid";
 import "./ProductCard.css";
 import { Link } from "react-router-dom";
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, quantity, productId, shoppingCart, handleAddItemToCart, handleRemoveItemToCart }) {
   /*
     product - the product object returned by the API request
     productId - the id of the product extracted from the url
     quantity - the quantity for this product found in the shoppingCart
     handleAddItemToCart - handler function
     handleRemoveItemToCart - handler function
+
     */
+  
   return (
     
       <div className="productCard">
@@ -31,17 +33,18 @@ export default function ProductCard({ product }) {
               ></img>
             </div>
             <p>{"$" + product.price}</p>
+            {/* <p className="product-quantity">{quantity}</p> */}
             <div className="controls">
-              <button className="add">
+              <button className="add" onClick={() => handleAddItemToCart(product.id)}>
                 <i className="material-icons"> add </i>
               </button>
               <button className="remove">
-                <i className="material-icons"> remove </i>
+                <i className="material-icons" onClick={() => handleRemoveItemToCart(product.id)}> remove </i>
               </button>
             </div>
           </div>
           <img className="stars"></img>
-          <p></p>
+          <p>{quantity}</p>
         </div>
       </div>
     

@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import ProductView from "../ProductView/ProductView";
 
 
-export default function ProductDetail({shoppingCart}) {
+export default function ProductDetail({shoppingCart, products}) {
 
   const [product, setProduct] = useState()
 
@@ -48,11 +48,10 @@ export default function ProductDetail({shoppingCart}) {
     return (  
 
       
-        <div className="ProductDetail">
-         
-          <p>Product: {productId} </p>
+        <div className="productDetail">
+        
 
-          <ProductView productId={productId} product = {product}/>
+          <ProductView productId={productId} product = {product} products = {products} shoppingCart={shoppingCart}/>
   
         </div>
       )

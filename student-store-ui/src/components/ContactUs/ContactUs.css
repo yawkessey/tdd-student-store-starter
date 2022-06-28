@@ -38,3 +38,9 @@
   flex-direction: row;
   background: #2c4047
 }
+
+.contactUsSection {
+  padding: 20px;
+  margin: auto;
+  width: 70%;
+}

@@ -35,4 +35,11 @@ body {
 #logo {
     width: 60px;
     height: 60px;
+    margin-right: 0px !important;
+    margin-left: auto !important;
+}
+
+.logo {
+    margin-right: 0px !important;
+    margin-left: 100px;;   
 }
