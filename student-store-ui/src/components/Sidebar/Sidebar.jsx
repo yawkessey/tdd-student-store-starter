@@ -23,8 +23,10 @@ export default function Sidebar({ shoppingCart, products }) {
         <Link to="#" className="arrowBar">
           <i className="material-icons md-48">arrow_backwards</i>
         </Link>
-        <ShoppingCart shoppingCart={shoppingCart} products={products} />
       </li>
+      <div className="shoppingCart">
+      <ShoppingCart shoppingCart={shoppingCart} products={products} />
+      </div>
     </ul>
   );
 

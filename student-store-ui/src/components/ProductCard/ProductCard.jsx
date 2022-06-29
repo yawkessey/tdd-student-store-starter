@@ -15,7 +15,7 @@ export default function ProductCard({ product, quantity, productId, shoppingCart
     handleRemoveItemToCart - handler function
 
     */
-  
+
   return (
     
       <div className="productCard">
@@ -32,7 +32,7 @@ export default function ProductCard({ product, quantity, productId, shoppingCart
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/4.5_stars.svg/2560px-4.5_stars.svg.png"
               ></img>
             </div>
-            <p>{"$" + product.price}</p>
+            <p>{"$" + product.price.toFixed(2)}</p>
             {/* <p className="product-quantity">{quantity}</p> */}
             <div className="controls">
               <button className="add" onClick={() => handleAddItemToCart(product.id)}>

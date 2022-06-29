@@ -24,13 +24,13 @@ export default function ShoppingCart({ isOpen, products, shoppingCart }) {
         });
 
         return (
-          <ul className="cart-product-name">
+          <ul className="cartProductName">
             <li className="product-name"> {product.name} </li>
             <li className="product-quantity">{item.quantity}</li>
-            <li className="product-unit-price">{product.price} </li>
+            <li className="product-unit-price">{"$"+(product.price).toFixed(2)} </li>
             <li className="price">
               {" "}
-              {(item.quantity * product.price).toFixed(2)}{" "}
+              {"$" +(item.quantity * product.price).toFixed(2)}{" "}
             </li>
           </ul>
         );
