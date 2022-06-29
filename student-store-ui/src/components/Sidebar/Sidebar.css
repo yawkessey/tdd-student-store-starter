@@ -18,13 +18,19 @@
   z-index: 1;
   top: 0;
   left: 0;
+  flex-direction: column;
 }
 
+.material-icons {
+  color: green
+}
 
-.toggleArrow {
+.sidebarToggle {
   margin-left: 2rem;
   font-size: 2rem;
   background: none;
+  justify-content: center;
+  align-items: center;
 }
 
 .sidebarNotActive {
@@ -56,7 +62,6 @@
 }
 
 .sidebarToggle {
-  width: 100%;
   height: 80px;
   display: flex;
   justify-content: start;
@@ -65,4 +70,9 @@
 
 span {
   margin-left: 16px;
+}
+
+li {
+  list-style-type: none;
+  padding-bottom: 20px;
 }
