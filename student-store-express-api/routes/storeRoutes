@@ -1,0 +1,13 @@
+const express = require("express");
+const router = express.Router();
+const store = require("../models/store");
+
+router.get("/", (req, res, next) => {
+  res.status(200).send(store.getAll());
+});
+
+router.get("/:id", (req, res, next) => {
+  res.status(200).json(store.getById(req.params.id));
+});
+
+module.exports = router;

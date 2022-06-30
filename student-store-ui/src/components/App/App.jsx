@@ -69,6 +69,16 @@ export default function App() {
       .catch((err) => {
         console.log({ err });
       });
+
+
+      /*
+      axios
+        .get(https://localhost3040/store) {
+          .then((response) => {
+            console.log(res)
+          })
+        }
+      */
   }
 
   React.useEffect(() => {

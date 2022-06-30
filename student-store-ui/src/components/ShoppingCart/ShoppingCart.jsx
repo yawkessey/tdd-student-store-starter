@@ -2,6 +2,17 @@ import * as React from "react";
 import "./ShoppingCart.css";
 
 export default function ShoppingCart({ isOpen, products, shoppingCart }) {
+  let subTotal = 0
+  let tax = 0;
+  let total = 0;
+  shoppingCart.map((item) => {
+    let product = products.find((element) => {
+      return element.id == item.id;
+    })
+    subTotal += ((item.quantity * product.price));
+    tax = (subTotal * 0.0875)
+    total += (tax + subTotal)
+  })
   const display =
     //If the shopping cart is empty screen
     shoppingCart.length === 0 ? (
@@ -21,6 +32,7 @@ export default function ShoppingCart({ isOpen, products, shoppingCart }) {
           return element.id == item.id;
         });
 
+      
         return (
           <ul className="cartProductName">
             <li className="product-name"> {product.name} </li>
@@ -32,7 +44,6 @@ export default function ShoppingCart({ isOpen, products, shoppingCart }) {
               {" "}
               {"$" + (item.quantity * product.price).toFixed(2)}{" "}
             </li>
-            
           </ul>
         );
       })
@@ -51,7 +62,14 @@ export default function ShoppingCart({ isOpen, products, shoppingCart }) {
 
         {display}
       </div>
+
+      <div className="Totals">
+        <ul className="checkingOut">
+          <li>Subtotal:    ${(subTotal).toFixed(2)} </li>
+          <li>Tax:     ${(tax).toFixed(2)}</li>
+          <li>Total: ${(total).toFixed(2)}</li>
+        </ul>
+      </div>
     </div>
-    
   );
 }
