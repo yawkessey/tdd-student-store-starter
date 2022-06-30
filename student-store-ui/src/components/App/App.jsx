@@ -14,50 +14,53 @@ import ContactUs from "../ContactUs/ContactUs";
 export default function App() {
   let apiUrl = "https://codepath-store-api.herokuapp.com/store";
   const [products, setProducts] = useState([]);
-  const [shoppingCart, setShoppingCart] = useState([])
-  const [checkoutForm,  setCheckoutForm] = useState()
+  const [shoppingCart, setShoppingCart] = useState([]);
+  const [checkoutForm, setCheckoutForm] = useState();
 
+  function handleCheckoutFormChange(name, value) {
+    setCheckoutForm(name, value);
+  }
+
+  function handleOnSubmitCheckOutForm() {}
   function handleAddItemToCart(productId) {
-    let item = shoppingCart.find((element) => element.id == productId)
+    let item = shoppingCart.find((element) => element.id == productId);
 
     if (item) {
-      const newShoppingCart = [...shoppingCart]
-      newShoppingCart.forEach((item)=> {
+      const newShoppingCart = [...shoppingCart];
+      newShoppingCart.forEach((item) => {
         if (item.id == productId) {
           item.quantity += 1;
         }
 
-        setShoppingCart(newShoppingCart)
-      })
+        setShoppingCart(newShoppingCart);
+      });
     } else {
-      item= {
+      item = {
         id: productId,
-        quantity: 1
-      }
-      setShoppingCart(shoppingCart.concat(item))
+        quantity: 1,
+      };
+      setShoppingCart(shoppingCart.concat(item));
     }
   }
 
-  function handleRemoveItemToCart (productId) {
-    let item = shoppingCart.find((element)=>element.id == productId)
+  function handleRemoveItemToCart(productId) {
+    let item = shoppingCart.find((element) => element.id == productId);
 
     if (item) {
-      if(item.quantity == 1) {
+      if (item.quantity == 1) {
         const newCart = shoppingCart.filter((product) => {
-            return product.id != productId
-        })
-        setShoppingCart(newCart)
-        
+          return product.id != productId;
+        });
+        setShoppingCart(newCart);
       } else {
-        item.quantity -= 1
+        item.quantity -= 1;
       }
     }
   }
 
   const toggleSideBar = () => {
-    setSidebar
-  }
-
+    setSidebar;
+  };
 
   function getProductDetail() {
     axios
@@ -70,8 +73,7 @@ export default function App() {
         console.log({ err });
       });
 
-
-      /*
+    /*
       axios
         .get(https://localhost3040/store) {
           .then((response) => {
@@ -89,24 +91,43 @@ export default function App() {
     console.log(products);
   }, [products]);
 
-  
-
   return (
     <div className="app">
       <BrowserRouter>
         <main>
-          <Navbar products={products}/>
-          <Sidebar shoppingCart={shoppingCart} products={products}/>
+          <Navbar products={products} />
+          <Sidebar shoppingCart={shoppingCart} products={products} handleCheckoutFormChange={handleCheckoutFormChange} handleOnSubmitCheckOutForm={handleOnSubmitCheckOutForm} />
 
           <Routes>
-            <Route path="/" element={<Home products={products} shoppingCart={shoppingCart} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart}/>} />
-            <Route path="/products/:productId" element={<ProductDetail products={products} shoppingCart={shoppingCart} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart}/>}/>
+            <Route
+              path="/"
+              element={
+                <Home
+                  products={products}
+                  shoppingCart={shoppingCart}
+                  handleAddItemToCart={handleAddItemToCart}
+                  handleRemoveItemToCart={handleRemoveItemToCart}
+                />
+              }
+            />
+            <Route
+              path="/products/:productId"
+              element={
+                <ProductDetail
+                  products={products}
+                  shoppingCart={shoppingCart}
+                  handleAddItemToCart={handleAddItemToCart}
+                  handleRemoveItemToCart={handleRemoveItemToCart}
+                  handleCheckoutFormChange={handleCheckoutFormChange}
+                  handleOnSubmitCheckOutForm={handleOnSubmitCheckOutForm}
+                />
+              }
+            />
             <Route path="*" element={<NotFound />} />
           </Routes>
-     
-        <About id="about" />
-        <ContactUs />
-        
+
+          <About id="about" />
+          <ContactUs />
         </main>
       </BrowserRouter>
     </div>
