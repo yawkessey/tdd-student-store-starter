@@ -2,23 +2,25 @@ import * as React from "react";
 import "./ShoppingCart.css";
 
 export default function ShoppingCart({ isOpen, products, shoppingCart }) {
-  let subTotal = 0
+  let subTotal = 0;
   let tax = 0;
   let total = 0;
+
+  console.log(shoppingCart);
   shoppingCart.map((item) => {
     let product = products.find((element) => {
       return element.id == item.id;
-    })
-    subTotal += ((item.quantity * product.price));
-    tax = (subTotal * 0.0875)
-    total += (tax + subTotal)
-  })
+    });
+    subTotal += item.quantity * product.price;
+    tax = subTotal * 0.0875;
+    total += tax + subTotal;
+  });
   const display =
     //If the shopping cart is empty screen
     shoppingCart.length === 0 ? (
       <div className="no-show">
         {" "}
-        There is nothing in the shopping cart at the moment. Add to the cart
+        No items added to cart yet. Start shopping now!
       </div>
     ) : (
       // When there are things in the shopping cart
@@ -32,7 +34,6 @@ export default function ShoppingCart({ isOpen, products, shoppingCart }) {
           return element.id == item.id;
         });
 
-      
         return (
           <ul className="cartProductName">
             <li className="product-name"> {product.name} </li>
@@ -65,9 +66,9 @@ export default function ShoppingCart({ isOpen, products, shoppingCart }) {
 
       <div className="Totals">
         <ul className="checkingOut">
-          <li>Subtotal:    ${(subTotal).toFixed(2)} </li>
-          <li>Tax:     ${(tax).toFixed(2)}</li>
-          <li>Total: ${(total).toFixed(2)}</li>
+          <li>Subtotal: ${subTotal.toFixed(2)} </li>
+          <li>Tax: ${tax.toFixed(2)}</li>
+          <li>Total: ${total.toFixed(2)}</li>
         </ul>
       </div>
     </div>

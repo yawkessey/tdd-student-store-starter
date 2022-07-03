@@ -6,7 +6,7 @@ import shoppingCart from "../ShoppingCart/ShoppingCart";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
 
-export default function Sidebar({ shoppingCart, products, handleCheckoutFormChange, handleOnSubmitCheckOutForm }) {
+export default function Sidebar({ setShoppingCart, shoppingCart, products  }) {
   const [isOpen, setIsOpen] = useState(false);
   const toggleSidebar = () => setIsOpen(!isOpen);
 
@@ -29,7 +29,7 @@ export default function Sidebar({ shoppingCart, products, handleCheckoutFormChan
       <ShoppingCart shoppingCart={shoppingCart} products={products} />
       </div>
       <div className="checkoutForm"> 
-        <CheckoutForm handleCheckoutFormChange={handleCheckoutFormChange} handleOnSubmitCheckOutForm={handleOnSubmitCheckOutForm} />
+        <CheckoutForm setShoppingCart={setShoppingCart} shoppingCart={shoppingCart}  />
       </div>
     </ul>
   );

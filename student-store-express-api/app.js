@@ -1,10 +1,11 @@
 const express = require("express");
 const morgan = require("morgan");
 const store = require("./routes/storeRoutes");
-const product = require("./routes/products");
+const cors = require("cors");
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use(morgan("tiny"));
 
@@ -13,9 +14,6 @@ app.get("/", (req, res, next) => {
 });
 
 app.use("/store", store);
-app.use("/products", product);
-
-// const response = GiftExchange.pairs(req.body.names);
 
 module.exports = app;
 // YOUR CODE HERE

@@ -12,16 +12,10 @@ import About from "../About/About";
 import ContactUs from "../ContactUs/ContactUs";
 
 export default function App() {
-  let apiUrl = "https://codepath-store-api.herokuapp.com/store";
+  let apiUrl = "http://localhost:3040/store/";
   const [products, setProducts] = useState([]);
   const [shoppingCart, setShoppingCart] = useState([]);
-  const [checkoutForm, setCheckoutForm] = useState();
 
-  function handleCheckoutFormChange(name, value) {
-    setCheckoutForm(name, value);
-  }
-
-  function handleOnSubmitCheckOutForm() {}
   function handleAddItemToCart(productId) {
     let item = shoppingCart.find((element) => element.id == productId);
 
@@ -53,7 +47,13 @@ export default function App() {
         });
         setShoppingCart(newCart);
       } else {
-        item.quantity -= 1;
+        const newCart = [...shoppingCart];
+        newCart.forEach((item) => {
+          if (item.id == productId) {
+            item.quantity -= 1;
+          }
+          setShoppingCart(newCart);
+        });
       }
     }
   }
@@ -66,21 +66,12 @@ export default function App() {
     axios
       .get(apiUrl)
       .then((res) => {
-        console.log(res);
-        setProducts(res.data.products);
+        console.log("res:" + res);
+        setProducts(res.data);
       })
       .catch((err) => {
         console.log({ err });
       });
-
-    /*
-      axios
-        .get(https://localhost3040/store) {
-          .then((response) => {
-            console.log(res)
-          })
-        }
-      */
   }
 
   React.useEffect(() => {
@@ -96,7 +87,11 @@ export default function App() {
       <BrowserRouter>
         <main>
           <Navbar products={products} />
-          <Sidebar shoppingCart={shoppingCart} products={products} handleCheckoutFormChange={handleCheckoutFormChange} handleOnSubmitCheckOutForm={handleOnSubmitCheckOutForm} />
+          <Sidebar
+            shoppingCart={shoppingCart}
+            products={products}
+            setShoppingCart={setShoppingCart}
+          />
 
           <Routes>
             <Route
@@ -118,8 +113,6 @@ export default function App() {
                   shoppingCart={shoppingCart}
                   handleAddItemToCart={handleAddItemToCart}
                   handleRemoveItemToCart={handleRemoveItemToCart}
-                  handleCheckoutFormChange={handleCheckoutFormChange}
-                  handleOnSubmitCheckOutForm={handleOnSubmitCheckOutForm}
                 />
               }
             />
