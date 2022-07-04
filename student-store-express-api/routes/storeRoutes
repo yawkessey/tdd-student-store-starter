@@ -10,17 +10,12 @@ router.post("/", (req, res, next) => {
   const purchases = req.body;
 
   const userInfo = purchases.userInfo;
+
   const shoppingCart = purchases.shoppingCart;
 
   const data = store.createOrder(userInfo, shoppingCart);
   res.status(201).json({ purchase: data });
 
-  /*
-  Duplicates in shopping cart
-  Blank fields
-  */
-  //Would use my purchase function in /models/store.js
-  //res.status(200).json({purchase});
 });
 
 router.get("/:id", (req, res, next) => {

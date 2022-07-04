@@ -1,4 +1,5 @@
 const storage = require("../data/storage");
+const { BadRequestError, NotFoundError } = require("../utils/errors");
 const addedDate = new Date();
 const addedTime = addedDate.toString();
 
@@ -11,8 +12,15 @@ class store {
 
   //get by id
   static getById(id) {
-    id = parseInt(id);
-    return storage.storage.get("products").find({ id: id }).value();
+    try {
+      id = parseInt(id);
+      if (!storage.storage.get("products").find({ id: id }).value()) {
+        throw new NotFoundError("Product not found");
+      }
+      return storage.storage.get("products").find({ id: id }).value();
+    } catch (error) {
+      throw new NotFoundError(error.message);
+    }
   }
 
   static calcTotal(shoppingCart) {
@@ -36,22 +44,31 @@ class store {
   }
   // Handle transactions
   static createOrder(userInfo, shoppingCart) {
-    let orderInfo = {
-      orderId: this.createOrderId(),
-      name: userInfo.name,
-      email: userInfo.email,
-      order: shoppingCart,
-      total: this.calcTotal(shoppingCart).toFixed(2),
-      createdAt: addedTime,
-    };
+    try {
+      if (!userInfo || !userInfo.name || !userInfo.email) {
+        throw new BadRequestError("Missing user info");
+      }
+      if (!shoppingCart || !shoppingCart.length) {
+        throw new BadRequestError("Shopping cart is empty");
+      }
+      let orderInfo = {
+        orderId: this.createOrderId(),
+        name: userInfo.name,
+        email: userInfo.email,
+        order: shoppingCart,
+        total: this.calcTotal(shoppingCart).toFixed(2),
+      };
 
-    let purchase = storage.storage.get("purchases").value();
+      let purchase = storage.storage.get("purchases").value();
 
-    purchase.push(orderInfo);
+      purchase.push(orderInfo);
 
-    let purchases = storage.storage.set("purchases", purchase).write();
+      let purchases = storage.storage.set("purchases", purchase).write();
 
-    return purchase;
+      return purchase;
+    } catch (error) {
+      throw new BadRequestError(error.message);
+    }
   }
 }
 
