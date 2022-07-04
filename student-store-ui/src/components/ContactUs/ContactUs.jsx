@@ -4,7 +4,9 @@ import "./ContactUs.css";
 export default function ContactUs () {
   return (
     <div className="contactUsSection">
+      <a id="contact_us">
     <h1> Contact Us</h1>
+      </a>
     <div className="contactUsContainer">
       <div className="contactUsContent">
         <ul className="contactUsInfo">

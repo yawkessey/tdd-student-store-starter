@@ -21,11 +21,11 @@ export default function Navbar() {
         </li>
 
         <li>
-          <Link to="/#about">About Us</Link>
+          <a href="/#about">About Us</a>
         </li>
 
         <li>
-          <Link to="/contact_us">Contact Us</Link>
+          <a href="/#contact_us" >Contact Us</a>
         </li>
 
         <li>

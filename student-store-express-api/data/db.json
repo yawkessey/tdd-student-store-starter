@@ -145,5 +145,39 @@
       "price": 999.99
     }
   ],
-  "purchases": "[]"
+  "purchases": [
+    {
+      "orderId": 0,
+      "name": "yaw",
+      "email": "yawkesseyankomah@gmail.com",
+      "order": [
+        {
+          "id": 6,
+          "quantity": 2
+        },
+        {
+          "id": 7,
+          "quantity": 1
+        }
+      ],
+      "total": "48.90"
+    },
+    {
+      "orderId": 1,
+      "name": "Yaw",
+      "email": "y@aol.com",
+      "order": [
+        {
+          "id": 4,
+          "quantity": 1
+        },
+        {
+          "id": 3,
+          "quantity": 2
+        }
+      ],
+      "total": "10.04",
+      "createdAt": "Mon Jul 04 2022 16:41:25 GMT-0700 (Pacific Daylight Time)"
+    }
+  ]
 }

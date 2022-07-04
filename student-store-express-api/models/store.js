@@ -57,6 +57,7 @@ class store {
         email: userInfo.email,
         order: shoppingCart,
         total: this.calcTotal(shoppingCart).toFixed(2),
+        createdAt: addedTime,
       };
 
       let purchase = storage.storage.get("purchases").value();
